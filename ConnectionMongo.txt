@@ -1,0 +1,3 @@
+mongodb+srv://mb:McLlEeH840Ixdtkj@cluster0.5e6cs7n.mongodb.net/assignments?retryWrites=true&w=majority
+mongodb+srv://Finoana:McLlEeH840Ixdtkj@cluster0.wmkf47q.mongodb.net/assignments?retryWrites=true&w=majority
+mongodb+srv://Finoana:McLlEeH840Ixdtkj@cluster0.wmkf4assignments7q.mongodb.net/assignments?retryWrites=true&w=majority
