@@ -9,7 +9,8 @@ mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
-const uri = 'mongodb+srv://Finoana:McLlEeH840Ixdtkj@cluster0.wmkf47q.mongodb.net/assignments?retryWrites=true&w=majority';
+// const uri = 'mongodb+srv://Finoana:McLlEeH840Ixdtkj@cluster0.wmkf47q.mongodb.net/assignments?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://Finoana:McLlEeH840Ixdtkj@cluster0.wmkf47q.mongodb.net/tests?retryWrites=true&w=majority';
 
 const options = {
   useNewUrlParser: true,

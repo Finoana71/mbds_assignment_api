@@ -21,7 +21,7 @@ function initializeMatiere(){
 }
 
 function initializeEleve(){
-    Matiere.deleteMany({})
+    Eleve.deleteMany({})
     .then(() => {
         console.log('Données existantes supprimées avec succès');
 
