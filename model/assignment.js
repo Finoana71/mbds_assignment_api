@@ -6,7 +6,11 @@ let AssignmentSchema = Schema({
     id: Number,
     dateDeRendu: Date,
     nom: String,
-    rendu: Boolean
+    rendu: Boolean,
+    note: Number,
+    remarques: String,
+    eleve: { type: Schema.Types.ObjectId, ref: 'eleves', required: true }, 
+    matiere: { type: Schema.Types.ObjectId, ref: 'matieres', required: true }
 });
 
 AssignmentSchema.plugin(aggregatePaginate);
