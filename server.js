@@ -4,6 +4,7 @@ let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
 
 let mongoose = require('mongoose');
+const { initializeData } = require('./services/initialise-data');
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
@@ -21,6 +22,7 @@ mongoose.connect(uri, options)
     console.log("Connecté à la base MongoDB assignments dans le cloud !");
     console.log("at URI = " + uri);
     console.log("vérifiez with http://localhost:8010/api/assignments que cela fonctionne")
+    initializeData();
     },
     err => {
       console.log('Erreur de connexion: ', err);
