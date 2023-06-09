@@ -7,4 +7,7 @@ Pour ajouter les references eleve, matiere dans assignement avec l'aide de chatG
 https://www.geeksforgeeks.org/mongoose-insertmany-function/
 Pour inserer les données d'initialisation
 
+https://www.tabnine.com/code/javascript/functions/bcryptjs/hashSync
+Pour hacher les mot de passes
+
 Aide de chatGpt pour peupler la collection d'assignments
