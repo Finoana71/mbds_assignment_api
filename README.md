@@ -6,3 +6,5 @@ Pour ajouter les references eleve, matiere dans assignement avec l'aide de chatG
 
 https://www.geeksforgeeks.org/mongoose-insertmany-function/
 Pour inserer les données d'initialisation
+
+Aide de chatGpt pour peupler la collection d'assignments
