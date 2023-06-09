@@ -1,9 +1,14 @@
+const bcrypt = require("bcryptjs");
+
 const Matiere = require('./../model/matiere'); 
 const Eleve = require('./../model/eleve'); 
+const User = require('./../model/user'); 
 
 const matieres = require('./../data/matiere');
 const eleves = require('./../data/eleve');
+let users = require('./../data/user');
 
+// Peupler la collection pour les matières
 function initializeMatiere(){
     Matiere.deleteMany({})
     .then(() => {
@@ -20,6 +25,7 @@ function initializeMatiere(){
     );
 }
 
+// Peupler la collection pour les élèves
 function initializeEleve(){
     Eleve.deleteMany({})
     .then(() => {
@@ -36,10 +42,29 @@ function initializeEleve(){
     );
 }
 
+// Peupler la collection pour les utilisateurs
+function initializeUser(){
+    User.deleteMany({})
+    .then(() => {
+        console.log('Données existantes supprimées avec succès');
+        for(let user of users)
+            user.motDePasse = bcrypt.hashSync(user.motDePasse); // Hacher les mots de passes
+        User.insertMany(users)
+        .then(()=> console.log("Utilisateurs inserés"))
+        .catch((error)=>
+            console.error('Erreur lors de l\'insertion des données utilisateurs :', error)
+        );
+    })
+    .catch((error)=>
+        console.error('Erreur lors de la suppression des données utilisateurs:', error)
+    );
+}
 
+// Peupler la base de données
 function initializeData(){
-    initializeMatiere();
-    initializeEleve();
+    // initializeMatiere();
+    // initializeEleve();
+    initializeUser();
 }
 
 module.exports = {initializeData}
