@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
+let userController = require('./controllers/user.controller');
 
 let mongoose = require('mongoose');
 const { initializeData } = require('./services/initialise-data');
@@ -54,10 +55,15 @@ app.route(prefix + '/assignments')
 app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
+
+async function main(){
+  app.listen(port, "0.0.0.0");
+  userController(prefix + '/user', app);
+}
   
 
 // On démarre le serveur
-app.listen(port, "0.0.0.0");
+main();
 console.log('Serveur démarré sur http://localhost:' + port);
 
 module.exports = app;
