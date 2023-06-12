@@ -9,4 +9,4 @@ const matiereController = (url , router) => {
     } );
 }
 
-module.exports = matiereController
+module.exports = matiereController;
