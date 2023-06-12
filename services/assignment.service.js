@@ -23,7 +23,6 @@ function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, e
     return assignment;
 }
 
-
 // Modifier assignment
 async function updateAssignment(id, body){
     return await Assignment.findByIdAndUpdate(id, body, {new: true});
@@ -34,8 +33,22 @@ async function deleteAssignment(id) {
     await Assignment.findByIdAndRemove(id);
 }
 
+// Recuperer les assignments avec pagination 
+async function getAssignments(page, limit) {
+    var aggregateQuery = Assignment.aggregate();
+
+    const options = {page, limit};
+    const result = await Assignment.aggregatePaginate(aggregateQuery, options);
+    const assignments = result.docs;
+
+    await Assignment.populate(assignments, { path: "eleve" });
+    await Assignment.populate(assignments, { path: "matiere" });
+
+    return assignments;
+}
 module.exports = {
     createAssignment,
     updateAssignment,
-    deleteAssignment
+    deleteAssignment,
+    getAssignments
 }
