@@ -11,13 +11,22 @@ const assignmentController = (url , router) => {
 
     router.put( `${url}/:id`, (req, res) =>{
         assignmentService.updateAssignment(req.params.id, req.body).then(
-            (assignment) => response.success(res, assignment, "Assignment updated")
-        ).catch( err => response.error(res, err.message));
+            (assignment) => {
+                if(assignment)
+                    response.success(res, assignment, "Assignment updated")
+                else
+                    response.error(res, "Assignment not found", 404);   
+        }).catch( err => response.error(res, err.message));
     } );
 
     router.delete( `${url}/:id`, (req, res) =>{
         assignmentService.deleteAssignment(req.params.id).then(
-            () => response.success(res, undefined, "Assignment deleted")
+            (assignment) => {
+                if(assignment)
+                    response.success(res, null, "Assignment deleted")
+                else
+                    response.error(res, "Assignment not found", 404);   
+            }
         ).catch( err => response.error(res, err.message));
     } );
 
@@ -28,6 +37,18 @@ const assignmentController = (url , router) => {
             (assignments) => response.success(res, assignments, "Assignments retrieved")
         ).catch( err => response.error(res, err.message));
     } );
+
+    router.get( `${url}/:id`, (req, res) =>{
+        assignmentService.findAssignmentById(req.params.id).then(
+            (assignment) => {
+                if(assignment)
+                    response.success(res, assignment, "Assignment retrieved");
+                else
+                    response.error(res, "Assignment not found", 404);
+            }
+        ).catch( err => response.error(res, err.message));
+    } );
+
 }
 
 module.exports = assignmentController;

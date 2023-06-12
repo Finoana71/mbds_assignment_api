@@ -30,7 +30,7 @@ async function updateAssignment(id, body){
 
 // suppression d'un assignment (DELETE)
 async function deleteAssignment(id) {
-    await Assignment.findByIdAndRemove(id);
+    return await Assignment.findByIdAndRemove(id);
 }
 
 // Recuperer les assignments avec pagination 
@@ -46,9 +46,17 @@ async function getAssignments(page, limit) {
 
     return assignments;
 }
+
+// Recuperer un assignment par id 
+async function findAssignmentById(id){
+    let assignment = await Assignment.findById(id)
+        .populate(['eleve', 'matiere']);
+    return assignment;
+}
 module.exports = {
     createAssignment,
     updateAssignment,
     deleteAssignment,
-    getAssignments
+    getAssignments,
+    findAssignmentById
 }
