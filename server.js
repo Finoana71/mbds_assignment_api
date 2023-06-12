@@ -7,6 +7,7 @@ let userController = require('./controllers/user.controller');
 let mongoose = require('mongoose');
 const { initializeData } = require('./services/initialise-data');
 const assignmentController = require('./controllers/assignment.controller');
+const matiereController = require('./controllers/matiere.controller');
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
@@ -61,6 +62,7 @@ async function main(){
   app.listen(port, "0.0.0.0");
   userController(prefix + '/user', app);
   assignmentController(prefix + '/assignments', app);
+  matiereController(prefix + '/matieres', app);
 }
   
 
