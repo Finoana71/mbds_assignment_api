@@ -23,6 +23,13 @@ function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, e
     return assignment;
 }
 
+
+// Modifier assignment
+async function updateAssignment(_id, body){
+    return await Assignment.findByIdAndUpdate(_id, body, {new: true});
+}
+
 module.exports = {
-    createAssignment
+    createAssignment,
+    updateAssignment
 }

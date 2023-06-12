@@ -9,6 +9,11 @@ const assignmentController = (url , router) => {
      ).catch( err => response.error(res, err.message));
   } );
 
+  router.put( `${url}/:id`, (req, res) =>{
+    assignmentService.updateAssignment(req.params.id, req.body).then(
+      (assignment) => response.success(res, assignment, "Assignment updated")
+    ).catch( err => response.error(res, err.message));
+ } );
 }
 
 module.exports = assignmentController;
