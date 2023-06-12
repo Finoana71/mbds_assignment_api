@@ -150,6 +150,56 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Matieres",
+			"item": [
+				{
+					"name": "GET Matieres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/matieres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"matieres"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eleves",
+			"item": [
+				{
+					"name": "GET Eleves",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/eleves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"eleves"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
