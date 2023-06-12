@@ -25,11 +25,17 @@ function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, e
 
 
 // Modifier assignment
-async function updateAssignment(_id, body){
-    return await Assignment.findByIdAndUpdate(_id, body, {new: true});
+async function updateAssignment(id, body){
+    return await Assignment.findByIdAndUpdate(id, body, {new: true});
+}
+
+// suppression d'un assignment (DELETE)
+async function deleteAssignment(id) {
+    await Assignment.findByIdAndRemove(id);
 }
 
 module.exports = {
     createAssignment,
-    updateAssignment
+    updateAssignment,
+    deleteAssignment
 }
