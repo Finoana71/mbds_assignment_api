@@ -6,6 +6,7 @@ let userController = require('./controllers/user.controller');
 
 let mongoose = require('mongoose');
 const { initializeData } = require('./services/initialise-data');
+const assignmentController = require('./controllers/assignment.controller');
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
@@ -47,18 +48,19 @@ let port = process.env.PORT || 8010;
 // les routes
 const prefix = '/api';
 
-app.route(prefix + '/assignments')
-  .get(assignment.getAssignments)
-  .post(assignment.postAssignment)
-  .put(assignment.updateAssignment);
+// app.route(prefix + '/assignments')
+//   .get(assignment.getAssignments)
+//   .post(assignment.postAssignment)
+//   .put(assignment.updateAssignment);
 
-app.route(prefix + '/assignments/:id')
-  .get(assignment.getAssignment)
-  .delete(assignment.deleteAssignment);
+// app.route(prefix + '/assignments/:id')
+//   .get(assignment.getAssignment)
+//   .delete(assignment.deleteAssignment);
 
 async function main(){
   app.listen(port, "0.0.0.0");
   userController(prefix + '/user', app);
+  assignmentController(prefix + '/assignments', app);
 }
   
 
