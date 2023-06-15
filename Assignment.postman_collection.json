@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a652bc77-51aa-487a-b3ac-266f0b9998a5",
+		"_postman_id": "3d4f4c7f-1105-426f-b5c3-d3f557f8c62d",
 		"name": "Assignment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -144,6 +144,37 @@
 								"api",
 								"assignments",
 								"648762255aa67211b8e472db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rendre un assignment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateRendu\": \"2023-01-01\",\r\n    \"note\": 17,\r\n    \"remarques\": \"OK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/64870b3866ddb6264c99d0e3/rendre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								"64870b3866ddb6264c99d0e3",
+								"rendre"
 							]
 						}
 					},
