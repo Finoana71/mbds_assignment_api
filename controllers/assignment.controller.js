@@ -6,7 +6,7 @@ const assignmentController = (url , router) => {
     router.post( `${url}/`, (req, res) =>{
         assignmentService.createAssignment(req.body).then(
             (assignment) => response.success(res, assignment, "Assignment created")
-        ).catch( err => response.error(res, err.message));
+        ).catch( err => response.error(res, err));
     } );
 
     router.put( `${url}/:id`, (req, res) =>{
@@ -16,7 +16,7 @@ const assignmentController = (url , router) => {
                     response.success(res, assignment, "Assignment updated")
                 else
                     response.error(res, "Assignment not found", 404);   
-        }).catch( err => response.error(res, err.message));
+        }).catch( err => response.error(res, err));
     } );
 
     router.delete( `${url}/:id`, (req, res) =>{
@@ -27,7 +27,7 @@ const assignmentController = (url , router) => {
                 else
                     response.error(res, "Assignment not found", 404);   
             }
-        ).catch( err => response.error(res, err.message));
+        ).catch( err => response.error(res, err));
     } );
 
     router.get( `${url}/`, (req, res) =>{
@@ -35,7 +35,7 @@ const assignmentController = (url , router) => {
         const limit = parseInt(req.query.limit) || 10;
         assignmentService.getAssignments(page, limit).then(
             (assignments) => response.success(res, assignments, "Assignments retrieved")
-        ).catch( err => response.error(res, err.message));
+        ).catch( err => response.error(res, err));
     } );
 
     router.get( `${url}/:id`, (req, res) =>{
@@ -46,7 +46,7 @@ const assignmentController = (url , router) => {
                 else
                     response.error(res, "Assignment not found", 404);
             }
-        ).catch( err => response.error(res, err.message));
+        ).catch( err => response.error(res, err));
     } );
 
 }

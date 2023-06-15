@@ -7,15 +7,15 @@ module.exports = {
       } )
     },
     error : function(res, message, code = 400 ){
-      res.json( {
+      res.status(code).send( {
         code : code,
         message : message
       } )
     },
     errorCatch: function(res, err){
-      res.json( {
+      res.status(code).send( {
         code : err.code ?? 500,
-        message : err.message
+        message : err.code? err.message: "Une erreur s'est produite"
       } )
     }
   }
