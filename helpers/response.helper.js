@@ -13,8 +13,9 @@ module.exports = {
       } )
     },
     errorCatch: function(res, err){
+      const code = err.code?? 500;
       res.status(code).send( {
-        code : err.code ?? 500,
+        code : code,
         message : err.code? err.message: "Une erreur s'est produite"
       } )
     }

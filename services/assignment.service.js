@@ -87,10 +87,27 @@ async function findAssignmentById(id){
         .populate(['eleve', 'matiere']);
     return assignment;
 }
+
+// Rendre un assignment
+async function rendreAssignment(id, {dateRendu, note, remarques}){
+    const old = await Assignment.findById(id);
+    if(!old)
+        throw new MyError("Assignment introuvable", 404);
+    if(old.rendu)
+        throw new MyError("L'assignment est déjà rendu", 400);
+    if( isNaN(note) || note < 0 || note > 20)
+        throw new MyError("Veuillez spécifier une note entre 0 et 20");
+    if(!util.isDate(dateRendu) || new Date(dateRendu)>new Date())
+        throw new MyError("Veuillez spécifier une date de rendu valide", 400);
+    const body = {rendu: true, remarques, note, dateRendu}
+    return await Assignment.findByIdAndUpdate(id, body, {new: true});
+}
+
 module.exports = {
     createAssignment,
     updateAssignment,
     deleteAssignment,
     getAssignments,
-    findAssignmentById
+    findAssignmentById,
+    rendreAssignment
 }
