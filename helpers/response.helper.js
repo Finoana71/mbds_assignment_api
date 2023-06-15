@@ -11,6 +11,12 @@ module.exports = {
         code : code,
         message : message
       } )
+    },
+    errorCatch: function(res, err){
+      res.json( {
+        code : err.code ?? 500,
+        message : err.message
+      } )
     }
   }
   
