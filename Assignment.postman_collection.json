@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3d4f4c7f-1105-426f-b5c3-d3f557f8c62d",
+		"_postman_id": "a652bc77-51aa-487a-b3ac-266f0b9998a5",
 		"name": "Assignment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -66,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 15000,\r\n    \"dateDeRendu\": \"2023-05-25\",\r\n    \"nom\": \"Nienow and Sons 2\",\r\n    \"rendu\": null,\r\n    \"note\": 18,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.\",\r\n    \"eleve\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere\": \"6483092d49d09933e4472ae4\"\r\n}",
+							"raw": "{\r\n    \"id\": 15000,\r\n    \"dateDeRendu\": \"2023-05-25\",\r\n    \"nom\": \"Nienow and Sons 2\",\r\n    \"eleve_id\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere_id\": \"6483092d49d09933e4472ae4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,7 +96,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 14000,\r\n    \"dateDeRendu\": \"2023-05-20\",\r\n    \"nom\": \"Nienow and Sons\",\r\n    \"rendu\": null,\r\n    \"note\": 17,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n    \"eleve\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere\": \"6483092d49d09933e4472ae4\"\r\n}",
+							"raw": "{\r\n    \"id\": 14000,\r\n    \"dateDeRendu\": \"2023-05-20\",\r\n    \"nom\": \"Nienow and Sons\",\r\n    \"rendu\": null,\r\n    \"note\": 17,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n    \"eleve_id\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere_id\": \"6483092d49d09933e4472ae4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
