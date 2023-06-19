@@ -78,7 +78,7 @@ async function getAssignments(page, limit) {
     await Assignment.populate(assignments, { path: "eleve" });
     await Assignment.populate(assignments, { path: "matiere" });
 
-    return assignments;
+    return result;
 }
 
 // Recuperer un assignment par id 
