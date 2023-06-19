@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "3d4f4c7f-1105-426f-b5c3-d3f557f8c62d",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assignments",
+			"item": [
+				{
+					"name": "GET assignments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/6483093449d09933e4472ef5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								"6483093449d09933e4472ef5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET assignment by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/assignments?page=5&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "5"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE assignment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15000,\r\n    \"dateDeRendu\": \"2023-05-25\",\r\n    \"nom\": \"Nienow and Sons 2\",\r\n    \"rendu\": null,\r\n    \"note\": 18,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.\",\r\n    \"eleve\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere\": \"6483092d49d09933e4472ae4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE assignment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14000,\r\n    \"dateDeRendu\": \"2023-05-20\",\r\n    \"nom\": \"Nienow and Sons\",\r\n    \"rendu\": null,\r\n    \"note\": 17,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n    \"eleve\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere\": \"6483092d49d09933e4472ae4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/648762255aa67211b8e472db",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								"648762255aa67211b8e472db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE assignment Copy 2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14000,\r\n    \"dateDeRendu\": \"2023-05-20\",\r\n    \"nom\": \"Nienow and Sons\",\r\n    \"rendu\": null,\r\n    \"note\": 17,\r\n    \"remarques\": \"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n    \"eleve\": \"6483092e49d09933e4472bd4\",\r\n    \"matiere\": \"6483092d49d09933e4472ae4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/648762255aa67211b8e472db",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								"648762255aa67211b8e472db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rendre un assignment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateRendu\": \"2023-01-01\",\r\n    \"note\": 17,\r\n    \"remarques\": \"OK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/assignments/64870b3866ddb6264c99d0e3/rendre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"assignments",
+								"64870b3866ddb6264c99d0e3",
+								"rendre"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matieres",
+			"item": [
+				{
+					"name": "GET Matieres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/matieres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"matieres"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eleves",
+			"item": [
+				{
+					"name": "GET Eleves",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8010/api/eleves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"eleves"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

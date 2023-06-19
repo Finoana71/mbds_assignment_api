@@ -13,20 +13,39 @@ function getAssignmentsSansPagination(req, res){
 
 function getAssignments(req, res) {
     var aggregateQuery = Assignment.aggregate();
-    
-    Assignment.aggregatePaginate(aggregateQuery,
-      {
+
+    Assignment.aggregatePaginate(
+    aggregateQuery,
+    {
         page: parseInt(req.query.page) || 1,
         limit: parseInt(req.query.limit) || 10,
-      },
-      (err, assignments) => {
+    },
+    (err, result) => {
         if (err) {
-          res.send(err);
+        res.send(err);
+        } else {
+        const assignments = result.docs;
+        // Population des relations "eleves" et "matieres"
+        Assignment.populate(assignments, { path: "eleve" }, (err, populatedAssignments) => {
+            if (err) {
+            res.send(err);
+            } else {
+            Assignment.populate(
+                populatedAssignments,
+                { path: "matiere" },
+                (err, finalAssignments) => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send(finalAssignments);
+                }
+                }
+            );
+            }
+        });
         }
-        res.send(assignments);
-      }
-    );
-   }
+    });
+}
    
 // Récupérer un assignment par son id (GET)
 function getAssignment(req, res){
@@ -35,7 +54,8 @@ function getAssignment(req, res){
     Assignment.findOne({id: assignmentId}, (err, assignment) =>{
         if(err){res.send(err)}
         res.json(assignment);
-    })
+    }).populate('eleves')
+    .populate('matieres')
 }
 
 // Ajout d'un assignment (POST)
