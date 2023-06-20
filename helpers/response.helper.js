@@ -13,6 +13,7 @@ module.exports = {
       } )
     },
     errorCatch: function(res, err){
+      console.log(err)
       const code = err.code?? 500;
       res.status(code).send( {
         code : code,

@@ -47,7 +47,6 @@ const eleves = [{"nom":"Dalston Evison","photo":"https://robohash.org/idautin.pn
 {"nom":"Kin Collard","photo":"https://robohash.org/magnamvoluptatemillum.png?size=250x250&set=set1"},
 {"nom":"Leisha Elgee","photo":"https://robohash.org/illosuntdeserunt.png?size=250x250&set=set1"},
 {"nom":"Patton Belli","photo":"https://robohash.org/rerumnostrumid.png?size=250x250&set=set1"},
-{"nom":"Jelene Vigars","photo":"https://robohash.org/quamestquasi.png?size=250x250&set=set1"},
-];
+{"nom":"Jelene Vigars","photo":"https://robohash.org/quamestquasi.png?size=250x250&set=set1"}];
 
 module.exports = eleves;

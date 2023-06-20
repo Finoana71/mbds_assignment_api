@@ -46,7 +46,7 @@ function verifyRequiredAttribute(assignment){
 async function validateAssignment(assignment, _id = null){
     verifyRequiredAttribute(assignment);
     const otherAssignment = await Assignment.findOne({id: assignment.id});
-    if(otherAssignment && _id && otherAssignment._id != ObjectId(_id))
+    if(otherAssignment && _id && (otherAssignment._id + "") != "" + _id)
         throw new MyError(`Un assignment avec cet id "${assignment.id}" existe déjà`, 400);        
     const eleve = await eleveService.findById(assignment.eleve);
     if(!eleve)
@@ -58,7 +58,9 @@ async function validateAssignment(assignment, _id = null){
 
 // Modifier assignment
 async function updateAssignment(id, body){
-    let assignment = createAssignmentObject(body)
+    let assignment = createAssignmentObject(body);
+    assignment = JSON.parse(JSON.stringify(assignment));
+    delete assignment._id;
     await validateAssignment(assignment, id);
     return await Assignment.findByIdAndUpdate(id, assignment, {new: true});
 }
