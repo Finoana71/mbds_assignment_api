@@ -46,7 +46,7 @@ function verifyRequiredAttribute(assignment){
 async function validateAssignment(assignment, _id = null){
     verifyRequiredAttribute(assignment);
     const otherAssignment = await Assignment.findOne({id: assignment.id});
-    if(otherAssignment && _id && otherAssignment._id != ObjectId(_id))
+    if(otherAssignment && _id && (otherAssignment._id + "") != "" + _id)
         throw new MyError(`Un assignment avec cet id "${assignment.id}" existe déjà`, 400);        
     const eleve = await eleveService.findById(assignment.eleve);
     if(!eleve)
@@ -58,7 +58,9 @@ async function validateAssignment(assignment, _id = null){
 
 // Modifier assignment
 async function updateAssignment(id, body){
-    let assignment = createAssignmentObject(body)
+    let assignment = createAssignmentObject(body);
+    assignment = JSON.parse(JSON.stringify(assignment));
+    delete assignment._id;
     await validateAssignment(assignment, id);
     return await Assignment.findByIdAndUpdate(id, assignment, {new: true});
 }
@@ -90,7 +92,7 @@ async function findAssignmentById(id){
 }
 
 // Rendre un assignment
-async function rendreAssignment(id, {dateRendu, note, remarques}){
+async function rendreAssignment(id, {note, remarques}){
     const old = await Assignment.findById(id);
     if(!old)
         throw new MyError("Assignment introuvable", 404);
@@ -98,9 +100,7 @@ async function rendreAssignment(id, {dateRendu, note, remarques}){
         throw new MyError("L'assignment est déjà rendu", 400);
     if( isNaN(note) || note < 0 || note > 20)
         throw new MyError("Veuillez spécifier une note entre 0 et 20");
-    if(!util.isDate(dateRendu) || new Date(dateRendu)>new Date())
-        throw new MyError("Veuillez spécifier une date de rendu valide", 400);
-    const body = {rendu: true, remarques, note, dateRendu}
+    const body = {rendu: true, remarques, note}
     return await Assignment.findByIdAndUpdate(id, body, {new: true});
 }
 
