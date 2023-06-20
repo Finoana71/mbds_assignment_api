@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const Assignment = require('./../model/assignment'); 
 const Matiere = require('./../model/matiere'); 
 const Eleve = require('./../model/eleve'); 
-const User = require('./../model/user'); 
+const {User} = require('./../model/user'); 
 
 const matieres = require('./../data/matiere');
 const eleves = require('./../data/eleve');
