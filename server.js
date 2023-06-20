@@ -26,7 +26,7 @@ mongoose.connect(uri, options)
     console.log("Connecté à la base MongoDB assignments dans le cloud !");
     console.log("at URI = " + uri);
     console.log("vérifiez with http://localhost:8010/api/assignments que cela fonctionne")
-    initializeData();   // A commenter si on n'a plus besoin de peupler la base
+    // initializeData();   // A commenter si on n'a plus besoin de peupler la base
     },
     err => {
       console.log('Erreur de connexion: ', err);
