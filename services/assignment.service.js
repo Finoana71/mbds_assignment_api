@@ -16,10 +16,10 @@ async function createAssignment(body){
 }
 
 // Créer un objet assignment
-function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, eleve, matiere}){
-    if(!util.isHexadecimal(eleve))
+function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, eleve_id, matiere_id}){
+    if(!util.isHexadecimal(eleve_id))
         throw new MyError(`Veuillez renseigner un élève valide`, 400);        
-    if(!util.isHexadecimal(matiere))
+    if(!util.isHexadecimal(matiere_id))
         throw new MyError(`Veuillez renseigner un élève valide`, 400);        
     let assignment = new Assignment();
     assignment.id = id;
@@ -28,8 +28,8 @@ function createAssignmentObject({id, nom, dateDeRendu, rendu, note, remarques, e
     assignment.rendu = rendu;
     assignment.note = note;
     assignment.remarques = remarques;
-    assignment.eleve = ObjectId(eleve);
-    assignment.matiere = ObjectId(matiere);
+    assignment.eleve = ObjectId(eleve_id);
+    assignment.matiere = ObjectId(matiere_id);
     return assignment;
 }
 
@@ -58,8 +58,9 @@ async function validateAssignment(assignment, _id = null){
 
 // Modifier assignment
 async function updateAssignment(id, body){
-    await validateAssignment(body, id);
-    return await Assignment.findByIdAndUpdate(id, body, {new: true});
+    let assignment = createAssignmentObject(body)
+    await validateAssignment(assignment, id);
+    return await Assignment.findByIdAndUpdate(id, assignment, {new: true});
 }
 
 // suppression d'un assignment (DELETE)
